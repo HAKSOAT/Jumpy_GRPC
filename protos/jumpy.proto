@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.jumpy";
+option java_outer_classname = "JumpyProto";
+option objc_class_prefix = "Jumpy";
+
+package jumpy;
+
+service JumiaProductsFetcher {
+  rpc GetProduct (ProductRequest) returns (ProductResponse) {}
+  rpc GetProducts (ProductRequest) returns (stream ProductResponse) {}
+  rpc GetCheapestProduct (stream ProductRequest) returns (ProductResponse) {}
+  rpc GetCheapestProducts (stream ProductRequest) returns (stream ProductResponse) {}
+}
+
+message Page {
+  int32 id = 1;
+}
+
+message Category {
+  string link = 1;
+  repeated Page page = 2;
+}
+
+message ProductRequest {
+  Category category = 1;
+  int32 index = 2;
+}
+
+message ProductResponse {
+  string name = 1;
+  string link = 2;
+  float price = 3;
+  double rating = 4;
+  string rated_sales = 5;
+  string seller_name = 6;
+}
