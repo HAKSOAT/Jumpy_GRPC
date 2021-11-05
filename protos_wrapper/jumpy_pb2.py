@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\rio.grpc.jumpyB\nJumpyProtoP\001\242\002\005Jumpy',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0bjumpy.proto\x12\x05jumpy\"\x12\n\x04Page\x12\n\n\x02id\x18\x01 \x01(\x05\"3\n\x08\x43\x61tegory\x12\x0c\n\x04link\x18\x01 \x01(\t\x12\x19\n\x04page\x18\x02 \x03(\x0b\x32\x0b.jumpy.Page\"B\n\x0eProductRequest\x12!\n\x08\x63\x61tegory\x18\x01 \x01(\x0b\x32\x0f.jumpy.Category\x12\r\n\x05index\x18\x02 \x01(\x05\"v\n\x0fProductResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04link\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x02\x12\x0e\n\x06rating\x18\x04 \x01(\x01\x12\x13\n\x0brated_sales\x18\x05 \x01(\t\x12\x13\n\x0bseller_name\x18\x06 \x01(\t2\xac\x02\n\x14JumiaProductsFetcher\x12=\n\nGetProduct\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00\x12@\n\x0bGetProducts\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00\x30\x01\x12G\n\x12GetCheapestProduct\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00(\x01\x12J\n\x13GetCheapestProducts\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00(\x01\x30\x01\x42%\n\rio.grpc.jumpyB\nJumpyProtoP\x01\xa2\x02\x05Jumpyb\x06proto3'
+  serialized_pb=b'\n\x0bjumpy.proto\x12\x05jumpy\"\x12\n\x04Page\x12\n\n\x02id\x18\x01 \x01(\x05\"3\n\x08\x43\x61tegory\x12\x0c\n\x04link\x18\x01 \x01(\t\x12\x19\n\x04page\x18\x02 \x03(\x0b\x32\x0b.jumpy.Page\"B\n\x0eProductRequest\x12!\n\x08\x63\x61tegory\x18\x01 \x01(\x0b\x32\x0f.jumpy.Category\x12\r\n\x05index\x18\x02 \x01(\x05\"a\n\x0fProductResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04link\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x02\x12\x0e\n\x06rating\x18\x04 \x01(\x01\x12\x13\n\x0brated_sales\x18\x05 \x01(\t2\xac\x02\n\x14JumiaProductsFetcher\x12=\n\nGetProduct\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00\x12@\n\x0bGetProducts\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00\x30\x01\x12G\n\x12GetCheapestProduct\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00(\x01\x12J\n\x13GetCheapestProducts\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00(\x01\x30\x01\x42%\n\rio.grpc.jumpyB\nJumpyProtoP\x01\xa2\x02\x05Jumpyb\x06proto3'
 )
 
 
@@ -178,13 +178,6 @@ _PRODUCTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='seller_name', full_name='jumpy.ProductResponse.seller_name', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -198,7 +191,7 @@ _PRODUCTRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=163,
-  serialized_end=281,
+  serialized_end=260,
 )
 
 _CATEGORY.fields_by_name['page'].message_type = _PAGE
@@ -247,8 +240,8 @@ _JUMIAPRODUCTSFETCHER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=284,
-  serialized_end=584,
+  serialized_start=263,
+  serialized_end=563,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetProduct',

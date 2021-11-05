@@ -34,5 +34,4 @@ message ProductResponse {
   float price = 3;
   double rating = 4;
   string rated_sales = 5;
-  string seller_name = 6;
 }
