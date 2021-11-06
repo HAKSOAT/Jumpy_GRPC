@@ -22,7 +22,7 @@ class JumiaProduct(object):
 
     """
 
-    def __init__(self, category_link, start_page, end_page):
+    def __init__(self, category_link, page_num):
 
         if requests.get(category_link).status_code != 200:
             raise ConnectionError("This link is invalid")
@@ -30,22 +30,13 @@ class JumiaProduct(object):
         if (".html" or "?") in category_link:
             raise Exception("This link doesn't lead to a Jumia category")
 
-        if (type(start_page) or type(end_page)) != int:
-            raise TypeError("start_page and end_page should be integers")
+        if type(page_num) != int:
+            raise TypeError("page_num should be an integer")
 
         self.category_link = category_link
-        self.start_page = start_page
-        self.end_page = end_page
-        self.pages = []
-        self.products = []
-        self.names = []
-        self.links = []
-        self.prices = []
-        self.ratings = []
-        self.rated_sales = []
-        self.sellers = []
+        self.page_num = page_num
 
-    def get_pages(self):
+    def _get_page(self):
         """
 
         This method is used to get the html pages of products from
@@ -54,16 +45,13 @@ class JumiaProduct(object):
         It returns a list of the html pages.
 
         """
+        address_extension = "?page={}".format(self.page_num)
+        full_address = self.category_link + address_extension
+        html_request = requests.get(full_address)
+        html_content = html_request.content
+        return bso(html_content, "html.parser").find("section", {"class": "card -fh"})
 
-        for page_number in range(self.start_page, self.end_page + 1):
-            address_extension = "?page={}".format(page_number)
-            full_address = self.category_link + address_extension
-            html_request = requests.get(full_address)
-            html_content = html_request.content
-            page = bso(html_content, "html.parser").find("section", {"class": "card -fh"})
-            self.pages.append(page)
-
-    def get_products(self):
+    def get_data(self, index=None):
         """
 
         This method is used to get the products from
@@ -72,90 +60,38 @@ class JumiaProduct(object):
         It returns a list of the products.
 
         """
+        page = self._get_page()
+        class_value = re.compile(r"(?:prd _fb col c-prd$)")
+        products = page.find_all("article", {"class": class_value})
 
-        for page in self.pages:
-            class_value = re.compile(r"(?:prd _fb col c-prd$)")
-            self.products += page.find_all("article", {"class": class_value})
+        data = []
+        if index:
+            products = [products[index]]
 
-    def get_links(self):
-        """
+        for product in products:
+            link = "https://www.jumia.com.ng{}".format(product.find("a")["href"])
+            name = product.find("h3", {"class": "name"}).text
+            price = product.find("div", {"class": "prc"}).text
+            price = price.split(' ')[1] + " NGN"
 
-        It takes in a list of html pages already parsed by the get_pages method
-        and further parses them to get the link
-        to every product.
-
-        It returns a list of the product links
-
-        """
-
-        for product in self.products:
-            self.links.append(product.find("a")["href"])
-
-    def get_names(self):
-        """
-
-        It takes in a list of html pages already parsed by the get_pages method
-        and further and parses them to get the name
-        of every product.
-
-        It returns a list of the product names
-
-        """
-
-        for product in self.products:
-            self.names.append(product.find("h3", {"class": "name"}).text)
-
-    def get_prices(self):
-        """
-
-        It takes in a list of html pages already parsed by the get_pages method
-        and further and parses them to get the price
-        of every product.
-
-        It returns a list of the product prices
-
-        """
-
-        for product in self.products:
-            self.prices.append(product.find("div", {"class": "prc"}).text)
-
-    def get_ratings(self):
-        """
-
-        It takes in a list of html pages already parsed by the get_pages method
-        and further and parses them to get the rating
-        of every product.
-
-        It returns a list of the product ratings
-
-        """
-
-        for product in self.products:
             review_div = product.find("div", {"class": "rev"})
             if not review_div:
-                self.ratings.append("No Rating")
+                rating = "No Rating"
+                rated_sales = "No Rating"
             else:
                 rating_tag = review_div.find("div", {"class": "in"})["style"]
                 rating_re = re.compile(r"[0-9]+")
-                stars = format(int(rating_re.findall(rating_tag)[0]) / 100 * 5, '.2f')
-                self.ratings.append(stars)
+                rating = format(int(rating_re.findall(rating_tag)[0]) / 100 * 5, '.2f')
 
-    def get_rated_sales(self):
-        """
-
-        It takes in a list of html pages already parsed by the get_pages method
-        and further and parses them to get the number of sales
-        of every product.
-
-        It returns a list of the product sales number
-
-        """
-
-        for product in self.products:
-            review_div = product.find("div", {"class": "rev"})
-            if not review_div:
-                self.ratings.append("No Rating")
-            else:
                 rated_sales_re = re.compile(r"\(([0-9]+)\)")
                 sales_count = rated_sales_re.search(review_div.text)
-                self.rated_sales.append(sales_count.group(1))
+                rated_sales = sales_count.group(1)
+            data.append({
+                "link": link,
+                "name": name,
+                "price": price,
+                "rating": rating,
+                "rated_sales": rated_sales
+            })
+
+        return data[0] if index else data
