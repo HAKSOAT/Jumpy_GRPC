@@ -7,19 +7,7 @@ class JumiaProduct(object):
     """
     This class parses the products section pages of jumia.com.ng,
     then it extracts some data such as the product names, prices, ratings, number of rated sales,
-    links, sellers.
-
-    It has the following methods:
-
-       get_pages()
-       get_products()
-       get_links()
-       get_prices()
-       get_names()
-       get_ratings()
-       get_sales()
-       get_sellers()
-
+    links.
     """
 
     def __init__(self, category_link, page_num):
@@ -35,6 +23,7 @@ class JumiaProduct(object):
 
         self.category_link = category_link
         self.page_num = page_num
+        self.page = self._get_page()
 
     def _get_page(self):
         """
@@ -43,7 +32,6 @@ class JumiaProduct(object):
         the section link provided.
 
         It returns a list of the html pages.
-
         """
         address_extension = "?page={}".format(self.page_num)
         full_address = self.category_link + address_extension
@@ -53,16 +41,10 @@ class JumiaProduct(object):
 
     def get_data(self, index=None):
         """
-
-        This method is used to get the products from
-        the section link provided.
-
-        It returns a list of the products.
-
+        This method is used to get the products data.
         """
-        page = self._get_page()
         class_value = re.compile(r"(?:prd _fb col c-prd$)")
-        products = page.find_all("article", {"class": class_value})
+        products = self.page.find_all("article", {"class": class_value})
 
         data = []
         if index:
