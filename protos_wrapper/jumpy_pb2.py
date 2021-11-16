@@ -15,11 +15,11 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='jumpy.proto',
-  package='jumpy',
+  package='',
   syntax='proto3',
-  serialized_options=b'\n\rio.grpc.jumpyB\nJumpyProtoP\001\242\002\005Jumpy',
+  serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0bjumpy.proto\x12\x05jumpy\"\x12\n\x04Page\x12\n\n\x02id\x18\x01 \x01(\x05\"3\n\x08\x43\x61tegory\x12\x0c\n\x04link\x18\x01 \x01(\t\x12\x19\n\x04page\x18\x02 \x03(\x0b\x32\x0b.jumpy.Page\"B\n\x0eProductRequest\x12!\n\x08\x63\x61tegory\x18\x01 \x01(\x0b\x32\x0f.jumpy.Category\x12\r\n\x05index\x18\x02 \x01(\x05\"a\n\x0fProductResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04link\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x02\x12\x0e\n\x06rating\x18\x04 \x01(\x01\x12\x13\n\x0brated_sales\x18\x05 \x01(\t2\xac\x02\n\x14JumiaProductsFetcher\x12=\n\nGetProduct\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00\x12@\n\x0bGetProducts\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00\x30\x01\x12G\n\x12GetCheapestProduct\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00(\x01\x12J\n\x13GetCheapestProducts\x12\x15.jumpy.ProductRequest\x1a\x16.jumpy.ProductResponse\"\x00(\x01\x30\x01\x42%\n\rio.grpc.jumpyB\nJumpyProtoP\x01\xa2\x02\x05Jumpyb\x06proto3'
+  serialized_pb=b'\n\x0bjumpy.proto\"\x12\n\x04Page\x12\n\n\x02id\x18\x01 \x01(\x05\"-\n\x08\x43\x61tegory\x12\x0c\n\x04link\x18\x01 \x01(\t\x12\x13\n\x04page\x18\x02 \x01(\x0b\x32\x05.Page\"<\n\x0eProductRequest\x12\x1b\n\x08\x63\x61tegory\x18\x01 \x01(\x0b\x32\t.Category\x12\r\n\x05index\x18\x02 \x01(\x05\"a\n\x0fProductResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04link\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\t\x12\x0e\n\x06rating\x18\x04 \x01(\t\x12\x13\n\x0brated_sales\x18\x05 \x01(\t2\xfb\x01\n\x05Jumia\x12\x31\n\nGetProduct\x12\x0f.ProductRequest\x1a\x10.ProductResponse\"\x00\x12\x34\n\x0bGetProducts\x12\x0f.ProductRequest\x1a\x10.ProductResponse\"\x00\x30\x01\x12\x42\n\x19GetCheapestProduct_Stream\x12\x0f.ProductRequest\x1a\x10.ProductResponse\"\x00(\x01\x12\x45\n\x1aGetCheapestProduct_Message\x12\x0f.ProductRequest\x1a\x10.ProductResponse\"\x00(\x01\x30\x01\x62\x06proto3'
 )
 
 
@@ -27,14 +27,14 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _PAGE = _descriptor.Descriptor(
   name='Page',
-  full_name='jumpy.Page',
+  full_name='Page',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='jumpy.Page.id', index=0,
+      name='id', full_name='Page.id', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -52,30 +52,30 @@ _PAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22,
-  serialized_end=40,
+  serialized_start=15,
+  serialized_end=33,
 )
 
 
 _CATEGORY = _descriptor.Descriptor(
   name='Category',
-  full_name='jumpy.Category',
+  full_name='Category',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='link', full_name='jumpy.Category.link', index=0,
+      name='link', full_name='Category.link', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='page', full_name='jumpy.Category.page', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='page', full_name='Category.page', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -91,28 +91,28 @@ _CATEGORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42,
-  serialized_end=93,
+  serialized_start=35,
+  serialized_end=80,
 )
 
 
 _PRODUCTREQUEST = _descriptor.Descriptor(
   name='ProductRequest',
-  full_name='jumpy.ProductRequest',
+  full_name='ProductRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='category', full_name='jumpy.ProductRequest.category', index=0,
+      name='category', full_name='ProductRequest.category', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='index', full_name='jumpy.ProductRequest.index', index=1,
+      name='index', full_name='ProductRequest.index', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -130,49 +130,49 @@ _PRODUCTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=95,
-  serialized_end=161,
+  serialized_start=82,
+  serialized_end=142,
 )
 
 
 _PRODUCTRESPONSE = _descriptor.Descriptor(
   name='ProductResponse',
-  full_name='jumpy.ProductResponse',
+  full_name='ProductResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='jumpy.ProductResponse.name', index=0,
+      name='name', full_name='ProductResponse.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='link', full_name='jumpy.ProductResponse.link', index=1,
+      name='link', full_name='ProductResponse.link', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='price', full_name='jumpy.ProductResponse.price', index=2,
-      number=3, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
+      name='price', full_name='ProductResponse.price', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='rating', full_name='jumpy.ProductResponse.rating', index=3,
-      number=4, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
+      name='rating', full_name='ProductResponse.rating', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='rated_sales', full_name='jumpy.ProductResponse.rated_sales', index=4,
+      name='rated_sales', full_name='ProductResponse.rated_sales', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -190,8 +190,8 @@ _PRODUCTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=163,
-  serialized_end=260,
+  serialized_start=144,
+  serialized_end=241,
 )
 
 _CATEGORY.fields_by_name['page'].message_type = _PAGE
@@ -205,47 +205,46 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 Page = _reflection.GeneratedProtocolMessageType('Page', (_message.Message,), {
   'DESCRIPTOR' : _PAGE,
   '__module__' : 'jumpy_pb2'
-  # @@protoc_insertion_point(class_scope:jumpy.Page)
+  # @@protoc_insertion_point(class_scope:Page)
   })
 _sym_db.RegisterMessage(Page)
 
 Category = _reflection.GeneratedProtocolMessageType('Category', (_message.Message,), {
   'DESCRIPTOR' : _CATEGORY,
   '__module__' : 'jumpy_pb2'
-  # @@protoc_insertion_point(class_scope:jumpy.Category)
+  # @@protoc_insertion_point(class_scope:Category)
   })
 _sym_db.RegisterMessage(Category)
 
 ProductRequest = _reflection.GeneratedProtocolMessageType('ProductRequest', (_message.Message,), {
   'DESCRIPTOR' : _PRODUCTREQUEST,
   '__module__' : 'jumpy_pb2'
-  # @@protoc_insertion_point(class_scope:jumpy.ProductRequest)
+  # @@protoc_insertion_point(class_scope:ProductRequest)
   })
 _sym_db.RegisterMessage(ProductRequest)
 
 ProductResponse = _reflection.GeneratedProtocolMessageType('ProductResponse', (_message.Message,), {
   'DESCRIPTOR' : _PRODUCTRESPONSE,
   '__module__' : 'jumpy_pb2'
-  # @@protoc_insertion_point(class_scope:jumpy.ProductResponse)
+  # @@protoc_insertion_point(class_scope:ProductResponse)
   })
 _sym_db.RegisterMessage(ProductResponse)
 
 
-DESCRIPTOR._options = None
 
-_JUMIAPRODUCTSFETCHER = _descriptor.ServiceDescriptor(
-  name='JumiaProductsFetcher',
-  full_name='jumpy.JumiaProductsFetcher',
+_JUMIA = _descriptor.ServiceDescriptor(
+  name='Jumia',
+  full_name='Jumia',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=263,
-  serialized_end=563,
+  serialized_start=244,
+  serialized_end=495,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetProduct',
-    full_name='jumpy.JumiaProductsFetcher.GetProduct',
+    full_name='Jumia.GetProduct',
     index=0,
     containing_service=None,
     input_type=_PRODUCTREQUEST,
@@ -255,7 +254,7 @@ _JUMIAPRODUCTSFETCHER = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='GetProducts',
-    full_name='jumpy.JumiaProductsFetcher.GetProducts',
+    full_name='Jumia.GetProducts',
     index=1,
     containing_service=None,
     input_type=_PRODUCTREQUEST,
@@ -264,8 +263,8 @@ _JUMIAPRODUCTSFETCHER = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
-    name='GetCheapestProduct',
-    full_name='jumpy.JumiaProductsFetcher.GetCheapestProduct',
+    name='GetCheapestProduct_Stream',
+    full_name='Jumia.GetCheapestProduct_Stream',
     index=2,
     containing_service=None,
     input_type=_PRODUCTREQUEST,
@@ -274,8 +273,8 @@ _JUMIAPRODUCTSFETCHER = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
-    name='GetCheapestProducts',
-    full_name='jumpy.JumiaProductsFetcher.GetCheapestProducts',
+    name='GetCheapestProduct_Message',
+    full_name='Jumia.GetCheapestProduct_Message',
     index=3,
     containing_service=None,
     input_type=_PRODUCTREQUEST,
@@ -284,8 +283,8 @@ _JUMIAPRODUCTSFETCHER = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_JUMIAPRODUCTSFETCHER)
+_sym_db.RegisterServiceDescriptor(_JUMIA)
 
-DESCRIPTOR.services_by_name['JumiaProductsFetcher'] = _JUMIAPRODUCTSFETCHER
+DESCRIPTOR.services_by_name['Jumia'] = _JUMIA
 
 # @@protoc_insertion_point(module_scope)

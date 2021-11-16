@@ -1,17 +1,11 @@
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_package = "io.grpc.jumpy";
-option java_outer_classname = "JumpyProto";
-option objc_class_prefix = "Jumpy";
 
-package jumpy;
-
-service JumiaProductsFetcher {
+service Jumia {
   rpc GetProduct (ProductRequest) returns (ProductResponse) {}
   rpc GetProducts (ProductRequest) returns (stream ProductResponse) {}
-  rpc GetCheapestProduct (stream ProductRequest) returns (ProductResponse) {}
-  rpc GetCheapestProducts (stream ProductRequest) returns (stream ProductResponse) {}
+  rpc GetCheapestProduct_Stream (stream ProductRequest) returns (ProductResponse) {}
+  rpc GetCheapestProduct_Message (stream ProductRequest) returns (stream ProductResponse) {}
 }
 
 message Page {
@@ -20,7 +14,7 @@ message Page {
 
 message Category {
   string link = 1;
-  repeated Page page = 2;
+  Page page = 2;
 }
 
 message ProductRequest {
@@ -31,7 +25,7 @@ message ProductRequest {
 message ProductResponse {
   string name = 1;
   string link = 2;
-  float price = 3;
-  double rating = 4;
+  string price = 3;
+  string rating = 4;
   string rated_sales = 5;
 }

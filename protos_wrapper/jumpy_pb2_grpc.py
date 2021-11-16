@@ -5,7 +5,7 @@ import grpc
 import protos_wrapper.jumpy_pb2 as jumpy__pb2
 
 
-class JumiaProductsFetcherStub(object):
+class JumiaStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -15,28 +15,28 @@ class JumiaProductsFetcherStub(object):
             channel: A grpc.Channel.
         """
         self.GetProduct = channel.unary_unary(
-                '/jumpy.JumiaProductsFetcher/GetProduct',
+                '/Jumia/GetProduct',
                 request_serializer=jumpy__pb2.ProductRequest.SerializeToString,
                 response_deserializer=jumpy__pb2.ProductResponse.FromString,
                 )
         self.GetProducts = channel.unary_stream(
-                '/jumpy.JumiaProductsFetcher/GetProducts',
+                '/Jumia/GetProducts',
                 request_serializer=jumpy__pb2.ProductRequest.SerializeToString,
                 response_deserializer=jumpy__pb2.ProductResponse.FromString,
                 )
-        self.GetCheapestProduct = channel.stream_unary(
-                '/jumpy.JumiaProductsFetcher/GetCheapestProduct',
+        self.GetCheapestProduct_Stream = channel.stream_unary(
+                '/Jumia/GetCheapestProduct_Stream',
                 request_serializer=jumpy__pb2.ProductRequest.SerializeToString,
                 response_deserializer=jumpy__pb2.ProductResponse.FromString,
                 )
-        self.GetCheapestProducts = channel.stream_stream(
-                '/jumpy.JumiaProductsFetcher/GetCheapestProducts',
+        self.GetCheapestProduct_Message = channel.stream_stream(
+                '/Jumia/GetCheapestProduct_Message',
                 request_serializer=jumpy__pb2.ProductRequest.SerializeToString,
                 response_deserializer=jumpy__pb2.ProductResponse.FromString,
                 )
 
 
-class JumiaProductsFetcherServicer(object):
+class JumiaServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetProduct(self, request, context):
@@ -51,20 +51,20 @@ class JumiaProductsFetcherServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetCheapestProduct(self, request_iterator, context):
+    def GetCheapestProduct_Stream(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetCheapestProducts(self, request_iterator, context):
+    def GetCheapestProduct_Message(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_JumiaProductsFetcherServicer_to_server(servicer, server):
+def add_JumiaServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetProduct': grpc.unary_unary_rpc_method_handler(
                     servicer.GetProduct,
@@ -76,24 +76,24 @@ def add_JumiaProductsFetcherServicer_to_server(servicer, server):
                     request_deserializer=jumpy__pb2.ProductRequest.FromString,
                     response_serializer=jumpy__pb2.ProductResponse.SerializeToString,
             ),
-            'GetCheapestProduct': grpc.stream_unary_rpc_method_handler(
-                    servicer.GetCheapestProduct,
+            'GetCheapestProduct_Stream': grpc.stream_unary_rpc_method_handler(
+                    servicer.GetCheapestProduct_Stream,
                     request_deserializer=jumpy__pb2.ProductRequest.FromString,
                     response_serializer=jumpy__pb2.ProductResponse.SerializeToString,
             ),
-            'GetCheapestProducts': grpc.stream_stream_rpc_method_handler(
-                    servicer.GetCheapestProducts,
+            'GetCheapestProduct_Message': grpc.stream_stream_rpc_method_handler(
+                    servicer.GetCheapestProduct_Message,
                     request_deserializer=jumpy__pb2.ProductRequest.FromString,
                     response_serializer=jumpy__pb2.ProductResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'jumpy.JumiaProductsFetcher', rpc_method_handlers)
+            'Jumia', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class JumiaProductsFetcher(object):
+class Jumia(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -107,7 +107,7 @@ class JumiaProductsFetcher(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/jumpy.JumiaProductsFetcher/GetProduct',
+        return grpc.experimental.unary_unary(request, target, '/Jumia/GetProduct',
             jumpy__pb2.ProductRequest.SerializeToString,
             jumpy__pb2.ProductResponse.FromString,
             options, channel_credentials,
@@ -124,14 +124,14 @@ class JumiaProductsFetcher(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/jumpy.JumiaProductsFetcher/GetProducts',
+        return grpc.experimental.unary_stream(request, target, '/Jumia/GetProducts',
             jumpy__pb2.ProductRequest.SerializeToString,
             jumpy__pb2.ProductResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def GetCheapestProduct(request_iterator,
+    def GetCheapestProduct_Stream(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -141,14 +141,14 @@ class JumiaProductsFetcher(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/jumpy.JumiaProductsFetcher/GetCheapestProduct',
+        return grpc.experimental.stream_unary(request_iterator, target, '/Jumia/GetCheapestProduct_Stream',
             jumpy__pb2.ProductRequest.SerializeToString,
             jumpy__pb2.ProductResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def GetCheapestProducts(request_iterator,
+    def GetCheapestProduct_Message(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -158,7 +158,7 @@ class JumiaProductsFetcher(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_stream(request_iterator, target, '/jumpy.JumiaProductsFetcher/GetCheapestProducts',
+        return grpc.experimental.stream_stream(request_iterator, target, '/Jumia/GetCheapestProduct_Message',
             jumpy__pb2.ProductRequest.SerializeToString,
             jumpy__pb2.ProductResponse.FromString,
             options, channel_credentials,
